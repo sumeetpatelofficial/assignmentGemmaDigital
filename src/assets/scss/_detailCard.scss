@@ -1,0 +1,48 @@
+.detail-card{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 50px;    
+    &:last-child{
+        margin-bottom: 0;
+    }
+    &-content{
+        position: relative;
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%;
+        padding-right: 15px;
+        padding-left: 15px;
+        .title{
+            @include font-size(36px);
+            margin-bottom: 15px;
+        }
+        p{
+            margin-bottom: 20px;
+        }
+    }
+    &-imagebox{        
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+        padding-right: 15px;
+        padding-left: 15px;        
+        .box{
+            position: relative;
+            display: block;
+            width: 100%;
+            background-color: $secondary;
+            max-height: 275px;
+            height: 100%;
+        }            
+    }
+
+    &.right-align{
+        flex-direction: row-reverse;
+        .detail-card-content{
+            text-align: right;
+        }
+    }
+}
