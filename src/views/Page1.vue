@@ -9,16 +9,12 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import DetailCard from "@/components/DetailCard.vue";
-import api from "@/api/apiService";
 @Component({
   components: {
     DetailCard
   },
 })
 export default class Home extends Vue {
-  mounted(){
-    const value = api.getPopulationData();
-    console.log(value.json())
-  }
+  
 }
 </script>
