@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@import 'variables';
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap-vue/src/index.scss";
+@import 'mixin';
+@import 'detailCard';
+@import 'footer';
+
+:root
+{
+  overflow: auto;
+  scrollbar-color: #aaa transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+
+  // chrome
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    height: 6px;
+    border-radius: 13px;
+    background-clip: padding-box;
+    border: 6px solid #aaa;
+    background-color: #aaa;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 13px;
+    background-color: transparent;
+    border: 6px solid transparent;
+    background-clip: padding-box;
+  }
+}
+
+:root.light{
+  --bg-theme:$white;
+  --bg-color:$white;
+  --text-color:#222222;
+  --duration: 0.5s;
+  --timing: ease; 
+  --btn-background:var(--primary);
+  --btn-text:var(--white); 
+}
+
+:root.dark{
+  --bg-theme:#3C415C;
+  --bg-color:#1A2029;
+  --text-color:#ffffff;
+  --duration: 0.5s;
+  --timing: ease;  
+  --btn-background:var(--pink);
+  --btn-text:var(--white);  
+}
+
+html,body{
+    height: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);    
+    font-weight: 400;
+    transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
+}
+body{
+  font-family: 'Rubik', sans-serif;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+a{
+  text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  color: $primary;
+}

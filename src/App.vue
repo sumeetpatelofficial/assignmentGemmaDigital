@@ -1,32 +1,37 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <b-navbar toggleable="lg" type="dark" variant="primary">
+      <b-container>
+        <b-navbar-brand href="#">Logo</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto mr-auto">
+          <b-nav-item href="#">Page 1</b-nav-item>
+          <b-nav-item href="#">Page 2</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <!-- <b-button variant="light" squared><span class="material-icons-outlined">search</span></b-button>           -->
+        </b-navbar-nav>      
+      </b-container>      
+    </b-navbar>
     <router-view />
+    <Footer />
   </div>
 </template>
-
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import Footer from "@/components/Footer.vue"
+@Component({
+  components: {
+    Footer
+  },
+})
+export default class App extends Vue {}
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
