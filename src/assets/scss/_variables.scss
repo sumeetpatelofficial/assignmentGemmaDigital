@@ -1,30 +1,26 @@
-$primary: #000000;
+$primary: #243a73;
 $secondary: #e5e5e5;
 
 $blue: #003c71;
 $indigo: #1f87c1;
 $purple: #6f42c1;
-$pink: #FF1E8A;
-$red: #DA1212;
-$orange: #FF8C32;
+$pink: #ff1e8a;
+$red: #da1212;
+$orange: #ff8c32;
 $yellow: #ffc107;
-$green: #48C751;
+$green: #48c751;
 $teal: #0082ba;
-$cyan: #00C2FF;
-$light: #F0E3E3;
+$cyan: #00c2ff;
+$light: #f0e3e3;
 $gray: #b5b5b5;
 $light-blue: #afe7ff;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
-$dark: #0F1724;
+$dark: #0f1724;
 
-
-$white:#ffffff;
-$border:#D9DEE4;
-$lable:#5B5D72;
-$breadscrumb:#A4A9AE;
+$highlight-color: #eb1d36;
 
 $theme-colors: ();
 $theme-colors: map-merge(
@@ -35,21 +31,19 @@ $theme-colors: map-merge(
     "info": $info,
     "warning": $warning,
     "danger": $danger,
-    "light": $white,
+    "light": $light,
     "dark": $dark,
     "blue": $blue,
     "indigo": $indigo,
     "orange": $orange,
     "gray": $gray,
-    "light-gray":$breadscrumb
   ),
   $theme-colors
 );
 
-
-$input-btn-padding-y:         .938rem !default;
-$input-btn-padding-x:         3.125rem !default;
+$input-btn-padding-y: 0.938rem !default;
+$input-btn-padding-x: 3.125rem !default;
 
 $border-radius: 4px;
-$btn-padding-x:               $input-btn-padding-x !default;
-$btn-padding-y:               $input-btn-padding-y !default;
+$btn-padding-x: $input-btn-padding-x !default;
+$btn-padding-y: $input-btn-padding-y !default;
