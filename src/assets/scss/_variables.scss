@@ -1,0 +1,53 @@
+$primary: #243a73;
+$secondary: #e5e5e5;
+
+$blue: #003c71;
+$indigo: #1f87c1;
+$purple: #6f42c1;
+$pink: #ff1e8a;
+$red: #da1212;
+$orange: #ff8c32;
+$yellow: #ffc107;
+$green: #48c751;
+$teal: #0082ba;
+$cyan: #00c2ff;
+$light: #e6e6e6;
+$gray: #b5b5b5;
+$light-blue: #afe7ff;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$dark: #0f1724;
+
+$highlight-color: #eb1d36;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $green,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+    "blue": $blue,
+    "indigo": $indigo,
+    "orange": $orange,
+    "gray": $gray,
+  ),
+  $theme-colors
+);
+
+$input-btn-padding-y: 0.938rem !default;
+$input-btn-padding-x: 3.125rem !default;
+$input-btn-padding-y-sm: 0.25rem !default;
+$input-btn-padding-x-sm: 0.5rem !default;
+
+$border-radius: 4px;
+$btn-padding-x: $input-btn-padding-x !default;
+$btn-padding-y: $input-btn-padding-y !default;
+$btn-padding-y-sm: $input-btn-padding-y-sm !default;
+$btn-padding-x-sm: $input-btn-padding-x-sm !default;

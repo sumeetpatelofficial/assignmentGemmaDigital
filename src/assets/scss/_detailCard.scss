@@ -1,0 +1,91 @@
+.detail-card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 80px;
+  }
+  margin-bottom: 30px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &-content {
+    position: relative;
+    order: 2;
+    @include media-breakpoint-up(md) {
+      flex: 0 0 45.66667%;
+      max-width: 45.66667%;
+      order: 1;
+    }
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    .title {
+      @include media-breakpoint-up(md) {
+        @include font-size(36px);
+        margin-bottom: 15px;
+      }
+      @include font-size(28px);
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+  }
+  &-imagebox {
+    position: relative;
+    width: 100%;
+    display: flex;
+    order: 1;
+    margin-bottom: 10px;
+    @include media-breakpoint-up(md) {
+      flex: 0 0 54.33333%;
+      max-width: 54.33333%;
+      margin-bottom: 0px;
+      order: 2;
+    }
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    .box {
+      position: relative;
+      display: block;
+      width: 100%;
+      background-color: $secondary;
+      max-height: 275px;
+      height: 100%;
+      @include aspect-ratio(16, 9);
+    }
+  }
+
+  &.right-align {
+    @include media-breakpoint-up(md) {
+      flex-direction: row-reverse;
+      .detail-card-content {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.carousel {
+  margin-top: 30px;
+  @include media-breakpoint-down(sm) {
+    margin-top: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .carousel-inner {
+    .carousel-item {
+      height: 200px;
+      @include media-breakpoint-up(md) {
+        height: 400px;
+      }
+      @include aspect-ratio(16, 9);
+    }
+  }
+}
