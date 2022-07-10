@@ -2,7 +2,7 @@
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <b-container class="position-relative">
-        <b-navbar-brand href="#">Logo</b-navbar-brand>
+        <b-navbar-brand href="/">Logo</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse">
           <template>
             <span class="material-icons-outlined">menu</span>
