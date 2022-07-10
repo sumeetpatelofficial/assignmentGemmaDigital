@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Carousel />
-    <div class="my-5">
+    <div class="my-md-5 my-3">
       <DetailCard
         v-for="(cardImage, card) in cardImages"
         :key="card"

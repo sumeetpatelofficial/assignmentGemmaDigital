@@ -10,7 +10,7 @@
         Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
         molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
       </p>
-      <b-button variant="secondary" squared>Lorem ipsum</b-button>
+      <b-button variant="primary" squared>Lorem ipsum</b-button>
     </div>
     <div class="detail-card-imagebox">
       <div class="box">

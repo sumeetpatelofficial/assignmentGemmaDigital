@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3" v-for="i in 4" :key="i">
+        <div class="col-md-3 col-6" v-for="i in 4" :key="i">
           <h5 class="heading">Lorem Ipsum</h5>
           <div class="links">
             <b-link v-for="j in 4" :key="j"> Lorem Ipsum </b-link>

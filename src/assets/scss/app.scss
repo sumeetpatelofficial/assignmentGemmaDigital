@@ -67,6 +67,8 @@ body {
     background-color var(--duration) var(--timing);
 }
 body {
+  position: relative;
+  height: 100%;
   font-family: "Rubik", sans-serif;
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
@@ -92,21 +94,51 @@ h3 {
 .page-title {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    align-items: center;
+  }
   h2 {
     position: relative;
-    @include font-size(36px);
+    @include font-size(28px);
+    @include media-breakpoint-up(md) {
+      @include font-size(36px);
+    }
+    flex: 1;
   }
   .action-area {
     position: relative;
-    margin-left: auto;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid $light;
+    border-bottom: 1px solid $light;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    @include media-breakpoint-up(md) {
+      margin-left: auto;
+      border: unset;
+      padding-top: 0;
+      padding-bottom: 0;
+      width: auto;
+    }
+    align-items: center;
     a {
       position: relative;
       display: inline-block;
       margin: 0 5px;
+      width: 100px;
+      @include media-breakpoint-down(sm) {
+        width: 80px;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
       span {
         color: rgba($color: $black, $alpha: 0.6);
-        // @include font-size(22px);
+        @include media-breakpoint-down(sm) {
+          @include font-size(22px);
+        }
         transition: all ease-in-out 0.2s;
       }
       &:hover,
@@ -114,6 +146,29 @@ h3 {
         span {
           color: $black;
         }
+      }
+      &.disabled {
+        span {
+          color: $light;
+        }
+      }
+    }
+    .custom-select {
+      position: relative;
+      padding: 10px 15px;
+      background: $light
+        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+        no-repeat right 15px center/8px 10px;
+      line-height: 1;
+      height: 40px;
+      border-radius: unset;
+      &:focus {
+        box-shadow: none;
+        border-color: $black;
+      }
+      &:focus-visible {
+        box-shadow: none;
+        outline: none;
       }
     }
   }
