@@ -9,8 +9,6 @@ Vue.use(BootstrapVue);
 import VueScreen from "vue-screen";
 Vue.use(VueScreen, "bootstrap");
 Vue.config.productionTip = false;
-import vClickOutside from "v-click-outside";
-Vue.use(vClickOutside);
 
 new Vue({
   router,
