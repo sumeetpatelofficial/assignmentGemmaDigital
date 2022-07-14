@@ -14,6 +14,11 @@ const routes: Array<RouteConfig> = [
     name: "Page2",
     component: () => import("../views/Page2.vue"),
   },
+  {
+    path: "/page3",
+    name: "Page3",
+    component: () => import("../views/Page3.vue"),
+  },
 ];
 
 const router = new VueRouter({
