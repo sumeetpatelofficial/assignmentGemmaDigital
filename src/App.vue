@@ -37,6 +37,17 @@
         </b-navbar-nav>
       </b-container>
     </b-navbar>
+    <header class="navbar-header">
+      <div class="navbar-container">
+        <div class="logo">Logo</div>
+        <div class="navbar-links">
+
+        </div>
+        <div class="search-bar-button" @click="toggleSearch = !toggleSearch">
+          <span class="material-icons-outlined">search</span>
+        </div>
+      </div>
+    </header>
     <router-view />
     <Footer></Footer>
   </div>

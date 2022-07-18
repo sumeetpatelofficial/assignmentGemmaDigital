@@ -57,7 +57,8 @@
           <span class="material-icons-outlined">refresh</span>
         </div>
       </div>
-      <Accordion v-if="!show">
+
+      <!-- <Accordion v-if="!show">
         <Panel v-for="(val, i) in perPagePopulation" :key="i">
           <template #heading>
             <h4>{{ val["ID Year"] }}</h4>
@@ -81,7 +82,35 @@
             </div>
           </template>
         </Panel>
-      </Accordion>
+      </Accordion> -->
+      <!-- <hr/> -->
+      <template v-if="!show">
+        <Panel v-for="(val, i) in perPagePopulation" :key="i">
+          <template #heading>
+            <h4>{{ val["ID Year"] }}</h4>
+          </template>
+          <template #body>
+            <div class="body-area">
+              <div class="row">
+                <div class="col-md-4 mb-md-0 mb-3">
+                  <h5>Country</h5>
+                  <p>Name : #{{ val["Nation"] }}</p>
+                </div>
+                <div class="col-md-4 text-md-center mb-md-0 mb-3">
+                  <h5>Population</h5>
+                  <p>{{ val.Population }}</p>
+                </div>
+                <div class="col-md-4 text-md-right mb-md-0">
+                  <h5>Source</h5>
+                  <p>
+                    {{ dataPopulation.source[0].annotations.source_name }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </template>
+        </Panel>
+      </template>
     </div>
 
     <div class="row mt-3" v-if="populationList.length > 0">
@@ -113,10 +142,11 @@
 <script>
 import axios from "axios";
 import _ from "lodash";
-import Accordion from "@/components/Accordion.vue";
-import Panel from "@/components/panel.vue";
+// import Accordion from "@/components/Accordion.vue";
+// import Panel from "@/components/panel.vue";
+import Panel from "@/components/panel2.vue";
 export default {
-  components: { Accordion, Panel },
+  components: { Panel },
   name: "Page3",
   data() {
     return {
@@ -126,7 +156,7 @@ export default {
       show: false,
       showAction: false,
       current: "", //showing current order icon highlighted
-      perPage: 4,
+      perPage: 7,
       filterList: null,
     };
   },
@@ -180,7 +210,7 @@ export default {
 
     //Filtering the list with select.
     filterListPopulation(e) {
-      debugger;
+      // debugger;
       const selectValue = e.target.value;
       if (selectValue != "") {
         this.populationList = this.dataPopulation.data;
@@ -195,13 +225,13 @@ export default {
 
     // view more button click.
     viewMore() {
-      if (this.perPage > this.populationList.length) return;
+      if (this.perPage > this.populationList.length);
       this.perPage = this.perPage + 3;
     },
 
     // can do as an improvement code
     viewLess() {
-      if (this.populationList.length > this.perPage) return;
+      if (this.populationList.length > this.perPage);
       this.perPage = this.perPage - 3;
     },
   },
@@ -210,13 +240,13 @@ export default {
   },
   computed: {
     perPagePopulation() {
-      let val = this.populationList.slice(0, this.perPage);
+      const val = this.populationList.slice(0, this.perPage);
       return val;
     },
     FilterOption() {
       var yearArray = [];
       if (this.dataPopulation.data) {
-        _.forEach(this.dataPopulation.data, function (value, key) {
+        _.forEach(this.dataPopulation.data, function (value) {
           yearArray.push({ value: value.Year });
         });
       }

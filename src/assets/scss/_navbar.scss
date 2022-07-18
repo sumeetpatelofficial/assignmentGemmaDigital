@@ -130,3 +130,14 @@
     user-select: none;
   }
 }
+
+.navbar-header{
+  position: relative;
+  background-color: $primary;
+  .navbar-container{
+    position: relative;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }  
+}
