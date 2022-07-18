@@ -115,6 +115,7 @@ h3 {
     border-bottom: 1px solid $light;
     padding-top: 5px;
     padding-bottom: 5px;
+    transition: all ease-in-out 0.2s;
     @include media-breakpoint-up(md) {
       margin-left: auto;
       border: unset;
@@ -128,6 +129,7 @@ h3 {
       display: inline-block;
       margin: 0 5px;
       width: 100px;
+      cursor: pointer;
       @include media-breakpoint-down(sm) {
         width: 80px;
       }
@@ -171,5 +173,70 @@ h3 {
         outline: none;
       }
     }
+  }
+}
+
+.custom-button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  background-color: rgba($color: $light, $alpha: 0.5);
+  color: $primary;
+  border: 1px solid transparent;
+  padding: 0.5rem 1.5rem;
+  @include font-size(16px);
+  transition: all ease-in-out 0.2s;
+  &:focus,
+  &:hover,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover,
+  &:active,
+  &:visited {
+    background-color: $light;
+  }
+}
+
+.overlay-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  background-color: rgba($color: $light, $alpha: 0.2);
+  border-radius: 4px;
+  transition: all ease-in-out 0.2s;
+  .icon-loader {
+    span {
+      @include font-size(60px);
+      color: $primary;
+      line-height: 60px;
+      animation: spin 2s linear infinite;
+    }
+  }
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform-origin: center;
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    transform-origin: center;
   }
 }

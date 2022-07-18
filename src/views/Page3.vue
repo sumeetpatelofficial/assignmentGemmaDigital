@@ -1,10 +1,66 @@
 <template>
   <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title my-4 row">
+          <div class="title col-auto">
+            <h2>Population</h2>
+          </div>
+          <div class="action-area col-auto" v-if="showAction">
+            <a
+              v-b-tooltip.hover
+              title="Ascending"
+              @click="sortData('asc')"
+              :class="{
+                current: current == 'asc',
+                disabled: populationList.length < 2,
+              }"
+            >
+              <span class="material-icons">sort</span>
+              <span class="material-icons-outlined">south</span>
+            </a>
+            <a
+              v-b-tooltip.hover
+              title="Descending"
+              @click="sortData('desc')"
+              :class="{
+                current: current == 'desc',
+                disabled: populationList.length < 2,
+              }"
+            >
+              <span class="material-icons">sort</span>
+              <span class="material-icons-outlined">north</span></a
+            >
+            <select
+              v-model="filterList"
+              class="custom-select"
+              @change="filterListPopulation"
+            >
+              <option :value="null">Filter</option>
+              <option
+                :value="option.value"
+                v-for="(option, optionKey) in FilterOption"
+                :key="optionKey"
+              >
+                {{ option.value }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="my-4">
-      <Accordion>
+      <p>Total {{ populationList.length }} records found.</p>
+      <div class="overlay-loading" v-if="show">
+        <div class="icon-loader">
+          <span class="material-icons-outlined">refresh</span>
+        </div>
+      </div>
+      <Accordion v-if="!show">
         <Panel v-for="(val, i) in perPagePopulation" :key="i">
           <template #heading>
-            <h4>{{ val["ID Year"] }}</h4>            
+            <h4>{{ val["ID Year"] }}</h4>
           </template>
           <template #body>
             <div class="row">
@@ -27,6 +83,30 @@
         </Panel>
       </Accordion>
     </div>
+
+    <div class="row mt-3" v-if="populationList.length > 0">
+      <div class="col-12 text-center">
+        <button
+          size="sm"
+          class="custom-button"
+          @click="viewMore"
+          v-if="perPage < populationList.length"
+        >
+          View More
+        </button>
+        <button
+          size="sm"
+          class="custom-button"
+          @click="viewLess"
+          v-if="
+            perPagePopulation.length > perPage ||
+            perPagePopulation.length == populationList.length
+          "
+        >
+          View Less
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +125,9 @@ export default {
       populationList: [],
       show: false,
       showAction: false,
+      current: "", //showing current order icon highlighted
+      perPage: 4,
+      filterList: null,
     };
   },
   methods: {
@@ -64,6 +147,63 @@ export default {
           .catch();
       }, 1500);
     },
+
+    // cases to sorting data
+    sortData(type) {
+      switch (type) {
+        case "asc":
+          this.current = type;
+          this.ascData();
+          break;
+        case "desc":
+          this.current = type;
+          this.descData();
+          break;
+        default:
+          break;
+      }
+    },
+
+    //sorting Data in ascending order
+    ascData() {
+      return (this.populationList = _.sortBy(this.populationList, "ID Year"));
+    },
+
+    //sorting Data in descending order
+    descData() {
+      return (this.populationList = _.orderBy(
+        this.populationList,
+        ["ID Year"],
+        ["desc"]
+      ));
+    },
+
+    //Filtering the list with select.
+    filterListPopulation(e) {
+      debugger;
+      const selectValue = e.target.value;
+      if (selectValue != "") {
+        this.populationList = this.dataPopulation.data;
+        const filteredList = this.perPagePopulation.filter(
+          (v) => v.Year == selectValue
+        );
+        this.populationList = filteredList;
+      } else {
+        this.populationList = this.dataPopulation.data;
+      }
+    },
+
+    // view more button click.
+    viewMore() {
+      if (this.perPage > this.populationList.length) return;
+      this.perPage = this.perPage + 3;
+    },
+
+    // can do as an improvement code
+    viewLess() {
+      if (this.populationList.length > this.perPage) return;
+      this.perPage = this.perPage - 3;
+    },
   },
   created() {
     this.getDataFromUrl();
@@ -76,9 +216,8 @@ export default {
     FilterOption() {
       var yearArray = [];
       if (this.dataPopulation.data) {
-        yearArray.push({ text: "Filter", value: null });
         _.forEach(this.dataPopulation.data, function (value, key) {
-          yearArray.push({ text: value.Year, value: value.Year });
+          yearArray.push({ value: value.Year });
         });
       }
       return yearArray;
