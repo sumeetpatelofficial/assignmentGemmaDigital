@@ -11,7 +11,7 @@ export default {
     return {
       Accordion: {
         count: 0,
-        activeAccordion: null,
+        activeAccordion: 0,
       },
     };
   },
@@ -21,5 +21,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

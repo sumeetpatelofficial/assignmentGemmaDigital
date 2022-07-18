@@ -46,7 +46,7 @@ export default {
       }
     },
     start(el) {
-        console.log(el)
+      console.log(el);
       el.style.height = el.scrollHeight + "px";
     },
     end(el) {
@@ -62,9 +62,9 @@ export default {
 <style lang="scss" scoped>
 .collapsible-enter-active,
 .collapsible-leave-active {
-  will-change: height, opacity;
-  max-height: auto;
-  transition: height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.3s cubic-bezier(0, 1, 0, 1);
+  will-change: height, opacity, display;
+  height: fit-content;
+  transition: height 0.3s ease, opacity 0.3s ease;
   overflow: hidden;
 }
 
