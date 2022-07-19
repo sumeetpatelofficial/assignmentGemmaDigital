@@ -58,6 +58,7 @@
         </div>
       </div>
 
+      <!-- Accordion created with vuejs transition -->
       <!-- <Accordion v-if="!show">
         <Panel v-for="(val, i) in perPagePopulation" :key="i">
           <template #heading>
@@ -83,9 +84,10 @@
           </template>
         </Panel>
       </Accordion> -->
-      <!-- <hr/> -->
+
+      <!-- Custom Panel component with javascript code -->
       <template v-if="!show">
-        <Panel v-for="(val, i) in perPagePopulation" :key="i">
+        <Panel2 v-for="(val, i) in perPagePopulation" :key="i">
           <template #heading>
             <h4>{{ val["ID Year"] }}</h4>
           </template>
@@ -109,7 +111,7 @@
               </div>
             </div>
           </template>
-        </Panel>
+        </Panel2>
       </template>
     </div>
 
@@ -142,11 +144,14 @@
 <script>
 import axios from "axios";
 import _ from "lodash";
+
+// uncomment this two component to use and check preview
 // import Accordion from "@/components/Accordion.vue";
 // import Panel from "@/components/panel.vue";
-import Panel from "@/components/panel2.vue";
+
+import Panel2 from "@/components/panel2.vue";
 export default {
-  components: { Panel },
+  components: { Panel2 }, //add {Accordion, Panel} to see the result
   name: "Page3",
   data() {
     return {

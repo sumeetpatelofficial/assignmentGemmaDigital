@@ -136,10 +136,7 @@
   background-color: $primary;
   padding: 10px 0;
   .navbar-container {
-    position: relative;
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 15px;
+    position: relative;                
     display: flex;
     align-items: center;
     width: 100%;
@@ -159,13 +156,20 @@
       position: absolute;
       width: 100%;
       left: 0;
+      top: 100%;
+      z-index: 9;
     }
     .navbar-links {
       position: relative;
       display: block;
       @include media-breakpoint-down(sm) {
-        display: none;
         position: relative;
+        background-color: $primary;
+        height: 0;
+        will-change: height, opacity;  
+        transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+        overflow: hidden;
+        opacity: 0;        
       }
       ul {
         display: flex;
@@ -175,12 +179,16 @@
         margin: 0;
         @include media-breakpoint-down(sm) {
           flex-direction: column;
+          align-items: flex-start;
         }
         > li {
           position: relative;
           margin: 0;
           @include media-breakpoint-up(md) {
             margin: 0 0.2rem;
+          }
+          @include media-breakpoint-down(sm){
+            width: 100%;
           }
           > a {
             position: relative;
@@ -228,8 +236,32 @@
             }
           }
         }
-      }
+      }      
     }
+    &.show{
+      .navbar-links{
+        height: auto;
+        opacity: 1;
+      }       
+    }
+  }
+}
+
+.collpase-toggle{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin-right: 10px;
+  @include media-breakpoint-up(sm){
+    display: none;
+  }
+  span{
+    color: $white;
+    line-height: 40px;
+    @include font-size(26px)
   }
 }
 

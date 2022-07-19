@@ -38,24 +38,25 @@
       </b-container>
     </b-navbar> -->
     <header class="navbar-header">
-      <div class="navbar-container">
+      <div class="navbar-container custom-container">
         <div class="navbar-logo"><a href="#">Logo</a></div>
-        <div class="navbar-collapsible">
+        <div class="collpase-toggle" @click="toggleMenu = !toggleMenu"><span class="material-icons-outlined">menu</span></div>
+        <div class="navbar-collapsible" :class="{show : toggleMenu}">          
           <div class="navbar-links">
             <ul>
-              <li>
-                <a :class="{ active: $route.name == 'Page1' }" href="/"
+              <li :class="{ active: $route.name == 'Page1' }">
+                <a  href="/"
                   >Page 1</a
                 >
               </li>
-              <li>
-                <a :class="{ active: $route.name == 'Page2' }" href="/page2"
+              <li :class="{ active: $route.name == 'Page2' }">
+                <a href="/page2"
                   >Page 2</a
                 >
               </li>
-              <li>
+              <li :class="{ active: $route.name == 'custom-page' }">
                 <a
-                  :class="{ active: $route.name == 'custom-page' }"
+                  
                   href="/custom-page"
                   >Custom Page</a
                 >
@@ -100,6 +101,7 @@ import Footer from "@/components/Footer.vue";
 export default class App extends Vue {
   searchText: any = "";
   toggleSearch: any = false;
+  toggleMenu:any = false;
   closeSearch() {
     this.toggleSearch = false;
     this.searchText = "";

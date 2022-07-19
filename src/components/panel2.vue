@@ -26,22 +26,23 @@ export default {
             targetClicked = targetClicked.parentElement;
             classClicked = targetClicked.classList;
           }
-          var description = targetClicked.nextElementSibling;
-          if (description.style.maxHeight) {
-            description.style.maxHeight = null;
+          var panelBody = targetClicked.nextElementSibling;
+          if (panelBody.style.maxHeight) {
+            panelBody.style.maxHeight = null;
             targetClicked.setAttribute("aria-expanded", "false");
           } else {
-            var allDescriptions = document.getElementsByClassName("panel-body");
-            for (var i = 0; i < allDescriptions.length; i++) {
-              if (allDescriptions[i].style.maxHeight) {
-                allDescriptions[i].style.maxHeight = null;
-                allDescriptions[i].previousElementSibling.setAttribute(
+            var allpanelBodys = document.getElementsByClassName("panel-body");
+            for (var i = 0; i < allpanelBodys.length; i++) {
+              if (allpanelBodys[i].style.maxHeight) {
+                allpanelBodys[i].style.maxHeight = null;
+                allpanelBodys[i].previousElementSibling.setAttribute(
                   "aria-expanded",
                   "false"
                 );
               }
             }
-            description.style.maxHeight = description.scrollHeight + "px";
+            panelBody.style.maxHeight = panelBody.scrollHeight + "px";
+            console.log(panelBody.scrollHeight)
             targetClicked.setAttribute("aria-expanded", "true");
           }
         });
