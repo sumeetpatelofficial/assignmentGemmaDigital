@@ -15,10 +15,10 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/Page2.vue"),
   },
   {
-    path: "/page3",
-    name: "Page3",
+    path: "/custom-page",
+    name: "custom-page",
     component: () => import("../views/Page3.vue"),
-  }
+  },
 ];
 
 const router = new VueRouter({

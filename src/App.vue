@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" type="dark" variant="primary">
+    <!-- <b-navbar toggleable="lg" type="dark" variant="primary">
       <b-container class="position-relative">
         <b-navbar-brand href="/">Logo</b-navbar-brand>
         <b-navbar-toggle target="nav-collapse">
@@ -36,15 +36,52 @@
           </div>
         </b-navbar-nav>
       </b-container>
-    </b-navbar>
+    </b-navbar> -->
     <header class="navbar-header">
       <div class="navbar-container">
-        <div class="logo">Logo</div>
-        <div class="navbar-links">
-
+        <div class="navbar-logo"><a href="#">Logo</a></div>
+        <div class="navbar-collapsible">
+          <div class="navbar-links">
+            <ul>
+              <li>
+                <a :class="{ active: $route.name == 'Page1' }" href="/"
+                  >Page 1</a
+                >
+              </li>
+              <li>
+                <a :class="{ active: $route.name == 'Page2' }" href="/page2"
+                  >Page 2</a
+                >
+              </li>
+              <li>
+                <a
+                  :class="{ active: $route.name == 'custom-page' }"
+                  href="/custom-page"
+                  >Custom Page</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="search-bar-button" @click="toggleSearch = !toggleSearch">
-          <span class="material-icons-outlined">search</span>
+        <div class="search-area" v-click-outside="closeSearch">
+          <div
+            class="search-input"
+            v-if="toggleSearch"
+            @keyup.enter="searchNew"
+          >
+            <b-form-group>
+              <div class="search-icon">
+                <span class="material-icons-outlined">search</span>
+              </div>
+              <b-form-input
+                v-model="searchText"
+                placeholder="Search..."
+              ></b-form-input>
+            </b-form-group>
+          </div>
+          <div class="search-bar-button" @click="toggleSearch = !toggleSearch">
+            <span class="material-icons-outlined">search</span>
+          </div>
         </div>
       </div>
     </header>
@@ -88,6 +125,11 @@ export default class App extends Vue {
       variant: "info",
       autoHideDelay: 2000,
     });
+  }
+
+  searchNew() {
+    alert(this.searchText);
+    this.searchText = "";
   }
 }
 </script>
