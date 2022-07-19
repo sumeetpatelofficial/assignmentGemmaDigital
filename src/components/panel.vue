@@ -9,6 +9,7 @@
       <i class="collapse-handle"></i>
     </div>
     <transition
+      type="animation"
       name="collapsible"
       @enter="start"
       @after-enter="end"
@@ -16,7 +17,9 @@
       @after-leave="end"
     >
       <div class="panel-body" v-show="visible">
-        <slot name="body"></slot>
+        <div class="body-area">
+          <slot name="body"></slot>
+        </div>
       </div>
     </transition>
   </div>
@@ -26,10 +29,11 @@
 export default {
   name: "Panel",
   props: {},
-  inject: ["Accordion"],
+  inject: ["Accordion"], 
   data() {
     return {
       index: null,
+      maxHeightValue : 0
     };
   },
   computed: {
@@ -45,12 +49,11 @@ export default {
         this.Accordion.activeAccordion = this.index;
       }
     },
-    start(el) {
-      console.log(el);
-      el.style.height = el.scrollHeight + "px";
+    start(el) {      
+      el.style.maxHeight = el.scrollHeight + "px";
     },
     end(el) {
-      el.style.height = "";
+      el.style.maxHeight = "";
     },
   },
   created() {
@@ -62,15 +65,14 @@ export default {
 <style lang="scss" scoped>
 .collapsible-enter-active,
 .collapsible-leave-active {
-  will-change: height, opacity, display;
-  height: fit-content;
-  transition: height 0.3s ease, opacity 0.3s ease;
+  will-change: max-height, opacity;  
+  transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
   overflow: hidden;
 }
 
 .collapsible-enter,
 .collapsible-leave-to {
-  height: 0 !important;
+  max-height: 0 !important;
   opacity: 0;
 }
 </style>

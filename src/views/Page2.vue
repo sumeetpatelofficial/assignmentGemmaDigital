@@ -60,20 +60,22 @@
                 accordion="population-accordion"
               >
                 <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-4 mb-md-0 mb-3">
-                      <h5>Country</h5>
-                      <p>Name : #{{ val["Nation"] }}</p>
-                    </div>
-                    <div class="col-md-4 text-md-center mb-md-0 mb-3">
-                      <h5>Population</h5>
-                      <p>{{ val.Population }}</p>
-                    </div>
-                    <div class="col-md-4 text-md-right mb-md-0">
-                      <h5>Source</h5>
-                      <p>
-                        {{ dataPopulation.source[0].annotations.source_name }}
-                      </p>
+                  <div class="body-area">
+                    <div class="row">
+                      <div class="col-md-4 mb-md-0 mb-3">
+                        <h5>Country</h5>
+                        <p>Name : #{{ val["Nation"] }}</p>
+                      </div>
+                      <div class="col-md-4 text-md-center mb-md-0 mb-3">
+                        <h5>Population</h5>
+                        <p>{{ val.Population }}</p>
+                      </div>
+                      <div class="col-md-4 text-md-right mb-md-0">
+                        <h5>Source</h5>
+                        <p>
+                          {{ dataPopulation.source[0].annotations.source_name }}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
